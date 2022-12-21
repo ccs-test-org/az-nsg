@@ -61,4 +61,3 @@ resource "azurerm_network_security_rule" "ccs_az_nsg_rule1" {
 #   network_security_group_name = azurerm_network_security_group.ccs_az_nsg_nsg.name
 # } 
 
-
