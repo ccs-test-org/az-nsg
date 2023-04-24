@@ -1,12 +1,18 @@
 resource "azurerm_resource_group" "ccs_az_nsg" {
   name     = "ccsaznsg"
   location = "West Europe"
+  tags = {
+    yor_trace = "f9771ab3-baab-404a-86f4-89685e778faa"
+  }
 }
 
 resource "azurerm_network_security_group" "ccs_az_nsg_nsg" {
   name                = "ccsaznsgnsg"
   location            = azurerm_resource_group.ccs_az_nsg.location
   resource_group_name = azurerm_resource_group.ccs_az_nsg.name
+  tags = {
+    yor_trace = "c2431d72-c639-47bb-ac30-5892b44f2ba7"
+  }
 }
 resource "azurerm_network_security_rule" "ccs_az_nsg_rule1" {
   name                        = "ccsaznsgrule1"
@@ -59,4 +65,4 @@ resource "azurerm_network_security_rule" "ccs_az_nsg_rule4" {
   destination_address_prefix  = "*"
   resource_group_name         = azurerm_resource_group.ccs_az_nsg.name
   network_security_group_name = azurerm_network_security_group.ccs_az_nsg_nsg.name
-} 
+}
